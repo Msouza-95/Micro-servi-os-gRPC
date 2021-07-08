@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+
+message Buy {
+    string id = 1;
+    string userId = 2;
+    string title = 3;
+    float value = 4;
+   
+
+}
+
+message GetBuyByIdRequest {
+    string id =1; 
+}
+
+message BuyRequest{
+   Buy buy = 1;
+
+}
+
+message ListBuyRequest {
+    string userId =1;    
+}
+
+
+message ListBuyResponse {
+    
+    repeated Buy buy =1;
+}
+
+
+message BuyResponse {
+   Buy buy =1;
+}
+
+
+service BuyService {
+    rpc GetBuyById(GetBuyByIdRequest) returns(BuyResponse);
+    rpc ListBuy(ListBuyRequest) returns(ListBuyResponse);
+    rpc Buy(BuyRequest) returns(BuyResponse);
+    
+}
